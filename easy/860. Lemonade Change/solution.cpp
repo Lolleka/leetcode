@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/lemonade-change/description/
+// easy
 
 #include <iostream>
 #include <vector>
