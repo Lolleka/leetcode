@@ -1,0 +1,61 @@
+// https://leetcode.com/problems/trapping-rain-water
+// hard
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+/* template<typename T> */
+/* std::vector<int> sort_indices(const std::vector<T> &v, bool reverse = false){ */
+/*     // initialize original index locations */
+/*     std::vector<int> idx(v.size()); */
+/*     std::iota(idx.begin(), idx.end(), 0); */
+    
+/*     std::stable_sort(idx.begin(), idx.end(), */
+/*             [&v, reverse](int i1, int i2) { return reverse ? v[i1] > v[i2] : v[i1] < v[i2]; }); */
+/*     return idx; */
+/* } */
+
+class Solution{
+public:
+    int trap(std::vector<int>& height){
+        /* std::vector<int> idx = sort_indices(height); */
+        /* int min = *std::min_element(height.begin(), height.end()); */
+        int max = *std::max_element(height.begin(), height.end());
+        int water = 0;
+        for (int i = 0; i < height.size(); ++i){
+            // scan right until we find a wall
+            /* std::cout << "i: " << i << " - height: " << height[i] << std::endl; */
+            int j = i+1;
+            for (; j < height.size() && height[j] < height[i]; ++j);
+            int tmp_water = 0;
+            if (j < height.size()){
+                // integrate
+                for (int k = i+1; k < j; ++k) tmp_water+=height[i]-height[k];
+                water += tmp_water;
+                std::cout << "r (" << i << " - " << j << "): " << tmp_water << std::endl;
+                // move pointer
+                i = j-1;
+            } else {
+                // we have hit a local maximum. To get back on track
+                // find the next maximum and integrate on the left
+                int j = i+1;
+                int v = height[j];
+                for (; j < height.size() && height[j] >= v; ++j) v = height[j];
+                // integrate
+                for (int k = i+1; k < j-1; ++k) tmp_water += v-height[k];
+                water += tmp_water;
+                std::cout << "l (" << i << " - " << j-1 << "): " << tmp_water << std::endl;
+                i = j-1;
+            }
+        }
+        return water;
+    }
+};
+
+int main(){
+    /* std::vector<int> height = {0,1,0,2,1,0,1,3,2,1,2,1}; */
+    std::vector<int> height = {4,2,0,3,2,5,1,3,1,0};
+    std::cout << Solution().trap(height) << std::endl;
+    return 0;
+}
