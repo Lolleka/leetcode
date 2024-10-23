@@ -1,4 +1,4 @@
-//
+// https://leetcode.com/problems/implement-trie-prefix-tree
 // medium
 #include <iostream>
 #include <string>
@@ -8,12 +8,13 @@ struct TrieNode{
     bool end;
     TrieNode* sibling;
     TrieNode* child;    
+    TrieNode() : val(0), sibling(nullptr), child(nullptr), end(false) {}
     TrieNode(char x) : val(x), sibling(nullptr), child(nullptr), end(false) {}
     TrieNode(char x, TrieNode*sibling, TrieNode*child) : val(x), sibling(sibling), child(child), end(false) {}
 };
 
 class Trie {
-    TrieNode* trieroot;
+    TrieNode trieroot;
 
     TrieNode* lookup(TrieNode* parent, char val){
         if (parent->val == val) return parent;
@@ -38,7 +39,7 @@ public:
         if (!word.size()) {
             return;
         }
-        TrieNode* root = trieroot;
+        TrieNode* root = &trieroot;
         for(int i=0; i<word.size(); ++i){
             if(!root->child){
                 TrieNode* newnode = new TrieNode(word[i]);
@@ -58,11 +59,29 @@ public:
     }
     
     bool search(std::string word) {
-        return false;
+        if (!word.size()) return false;
+        TrieNode* root = &trieroot;
+        for(int i=0; i<word.size(); ++i){
+            if(root->child){
+                TrieNode* next = lookup(root->child, word[i]);
+                if (!next) return false;
+                else root = next;
+            } else return false;
+        }
+        return root->end;
     }
     
     bool startsWith(std::string prefix) {
-        return false;
+        if (!prefix.size()) return false;
+        TrieNode* root = &trieroot;
+        for(int i=0; i<prefix.size(); ++i){
+            if(root->child){
+                TrieNode* next = lookup(root->child, prefix[i]);
+                if (!next) return false;
+                else root = next;
+            } else return false;
+        }
+        return true;
     }
 };
 
@@ -71,6 +90,7 @@ int main (int argc, char *argv[]) {
     std::string g = "core";
     Trie t;
     t.insert(s); t.insert(g);
+    std::cout << std::boolalpha << t.startsWith("cor") << std::endl;
     
     return 0;
 }
