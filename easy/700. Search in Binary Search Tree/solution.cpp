@@ -1,9 +1,11 @@
-// https://leetcode.com/problems/count-good-nodes-in-binary-tree
-// medium
+// https://leetcode.com/problems/search-in-a-binary-search-tree
+// easy
+
 #include <iostream>
-#include <stack>
 #include <vector>
 #include <queue>
+#include <deque>
+#include <stack>
 
 struct TreeNode {
     int val;
@@ -16,31 +18,25 @@ struct TreeNode {
 
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    TreeNode* searchBST(TreeNode* root, int val) {
         std::stack<TreeNode*> q;
-        std::stack<int> level;
-        int max_level = 1;
+        TreeNode* node = nullptr;
         TreeNode* current = root;
         q.push(root);
-        level.push(1);
+        int i = 1;
         while (!q.empty()){
             current = q.top(); q.pop();
-            int current_level = level.top(); level.pop();
-            max_level = max_level < current_level ? current_level : max_level; 
-            current_level++;
+            if (current->val == val){node = current; break;}
             if (current->right != nullptr){
                 q.push(current->right);
-                level.push(current_level);
             }
             if (current->left != nullptr){
                 q.push(current->left);
-                level.push(current_level);
             }
         }
-        return max_level;
+        return node;
     }
 };
-
 
 TreeNode* buildTree(std::vector<int>& nums) {
     if (nums.empty()) {
@@ -102,10 +98,8 @@ void printTree(TreeNode* root) {
 }
 
 int main(){
-    std::vector<int> t1 = {3,9,20,0,0,15,7};
-    std::vector<int> t2 = {1,0,2};
+    std::vector<int> t1 = {4,2,7,1,3};
     TreeNode* tree1 = buildTree(t1);
-    TreeNode* tree2 = buildTree(t2);
-    std::cout << Solution().maxDepth(tree1) << std::endl;
-    std::cout << Solution().maxDepth(tree2) << std::endl;
+    int val = 2;
+    printTree(Solution().searchBST(tree1, 2));
 }
