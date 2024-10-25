@@ -1,11 +1,11 @@
-// https://leetcode.com/problems/count-good-nodes-in-binary-tree
+// https://leetcode.com/problems/binary-tree-level-order-traversal
 // medium
+
 #include <iostream>
-#include <stack>
 #include <vector>
 #include <queue>
 
-truct TreeNode {
+struct TreeNode {
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -13,41 +13,6 @@ truct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-
-class Solution {
-public:
-    int goodNodes(TreeNode* root) {
-
-        std::stack<TreeNode*> q;
-        std::stack<int> max;
-        int current_max;
-        TreeNode* current = root;
-        int good = 0;
-        q.push(root);
-        max.push(root->val);
-        while (!q.empty()){
-            current = q.top(); q.pop();
-            current_max = max.top(); max.pop();
-            int new_max = current_max < current->val ? current->val : current_max; 
-            std::cout << current->val << "," << current_max; 
-            if (current->val >= current_max){
-                good++;
-                std::cout << " good";
-            }
-            std::cout << std::endl;
-            if (current->right != nullptr){
-                q.push(current->right);
-                max.push(new_max);
-            }
-            if (current->left != nullptr){
-                q.push(current->left);
-                max.push(new_max);
-            }
-        }
-        return good;
-    }
-};
-
 
 TreeNode* buildTree(std::vector<int>& nums) {
     if (nums.empty()) {
@@ -108,10 +73,58 @@ void printTree(TreeNode* root) {
     }
 }
 
+class Solution {
+public:
+    std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+        std::queue<TreeNode*> q;
+        std::queue<int> l;
+        std::vector<std::vector<int> > v;
+        if (root == nullptr) return v;
+        // Enqueue Root
+        q.push(root);
+        l.push(1);
+        /*v.push_back(std::vector<int>());*/
+        /*v[0].push_back(root->val);*/
+        while (q.empty() == false) {
+            // Print front of queue and remove it from queue
+            TreeNode* node = q.front();
+            int level = l.front();
+            if (v.size() < level) v.push_back(std::vector<int>());
+            v[level-1].push_back(node->val);
+            /*std::cout << node->val << " " << std::endl;*/
+            q.pop();
+            l.pop();
+                
+            // The following queueing order ensures we are
+            // traversing from left to right using a FIFO queue
+
+            // Enqueue left child second
+            if (node->left != nullptr){
+                l.push(level+1);
+                q.push(node->left);
+            }
+
+            // Enqueue right child first
+            if (node->right != nullptr){
+                l.push(level+1);
+                q.push(node->right);
+            }
+        }
+        return v;
+    }
+};
+
+
 int main(){
-    std::vector<int> t1 = {3,1,4,3,0,1,5};
-    std::vector<int> t2 = {4,2,6,0,3,5,7};
+    std::vector<int> t1 = {1,0,3};
+    std::vector<int> t2 = {1,2,3,0,5,0,4};
+
     TreeNode* tree1 = buildTree(t1);
     TreeNode* tree2 = buildTree(t2);
-    std::cout << Solution().goodNodes(tree1) << std::endl;
+    std::vector<std::vector<int> > vv = Solution().levelOrder(tree2);
+    for (int i=0; i<vv.size(); ++i){
+        std::vector<int> v = vv[i];
+        std::cout << "level " << i << std::endl;
+        for (int ii: v) std::cout << ii << std::endl;
+    }
 }
