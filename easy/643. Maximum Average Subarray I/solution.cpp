@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/maximum-average-subarray-i
 // easy
 // #array,  #sliding-window
+
 #include <iostream>
 #include <vector>
 

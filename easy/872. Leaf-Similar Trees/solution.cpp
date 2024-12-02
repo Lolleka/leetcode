@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/leaf-similar-trees
 // easy
+// #tree, #depth-first-search, #binary-tree
 
 #include <iostream>
 #include <vector>

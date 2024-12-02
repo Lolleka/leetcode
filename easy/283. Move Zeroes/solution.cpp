@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/move-zeroes
 // easy
+// #array, #two-pointers
+
 #include <iostream>
 #include <vector>
 

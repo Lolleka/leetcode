@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/binary-tree-level-order-traversal
 // medium
+// #tree, #breadth-first-search, #binary-tree
 
 #include <iostream>
 #include <vector>

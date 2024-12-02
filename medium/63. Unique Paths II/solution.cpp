@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/unique-paths-ii/
 // medium
+// #array, #dynamic-programming, #matrix
 
 #include <iostream>
 #include <vector>

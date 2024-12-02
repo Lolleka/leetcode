@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/unique-number-of-occurrences
 // easy
+// #array, #hash-table
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>

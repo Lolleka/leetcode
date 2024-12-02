@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/find-the-highest-altitude
 // easy
+// #array, #prefix-sum
 
 #include <iostream>
 #include <stack>

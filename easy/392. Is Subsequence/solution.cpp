@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/is-subsequence
 // easy
-// #two-pointer, #string, #dynamic-programming, #DP
+// #two-pointer, #string, #dynamic-programming, #dp
 
 #include <iostream>
 #include <vector>

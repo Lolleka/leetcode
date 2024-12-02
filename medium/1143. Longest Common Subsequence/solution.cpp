@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/longest-common-subsequence
 // medium
+// #string, #dynamic-programming, #dp
+
 #include <iostream>
 #include <string>
 

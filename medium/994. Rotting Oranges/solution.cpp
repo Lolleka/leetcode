@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/rotting-oranges
 // medium
+// #array, #breadth-first-search, #matrix
+
 #include <iostream>
 #include <vector>
 #include <utility>

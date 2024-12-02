@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/vt/merge-k-sorted-lists/
 // hard
+// #linked-list, #divide-and-conquer, #heap, #merge-sort
 
 #include <iostream>
 #include <vector>

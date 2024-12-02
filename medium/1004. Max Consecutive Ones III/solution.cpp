@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/max-consecutive-ones-iii/
 // medium
+// #array, #binary-search, #sliding-window, #prefix-sum
+
 #include <iostream>
 #include <vector>
 

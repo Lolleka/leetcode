@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/daily-temperatures
 // medium
+// #array, #stack, #monotonic-stack
 
 #include <iostream>
 #include <vector>
@@ -11,7 +12,6 @@ public:
     std::vector<int> dailyTemperatures(std::vector<int>& temperatures) {
         std::vector<int> answer(temperatures.size(), 0);
         std::stack<int> st;
-        /*for(int i=answer.size()-1; i >= 0; --i){*/
         for(int i=0; i < answer.size(); ++i){
             while(!st.empty() && temperatures[st.top()] < temperatures[i]){
                 int j = st.top();
@@ -19,9 +19,6 @@ public:
                 answer[j] = i-j;
             }
             st.push(i);
-            /*while(i < temperatures.size() && temperatures[j] <= temperatures[i] ){*/
-            /*    answer[i]++; j++;*/
-            /*}*/
         }
         return answer;
     }

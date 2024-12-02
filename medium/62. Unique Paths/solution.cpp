@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/unique-paths
 // medium
+// #math, #dynamic-programming, #dp, #combinatorics
 
 #include <iostream>
 

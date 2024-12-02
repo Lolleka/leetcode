@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/image-overlap/
 // medium
+// #array, #matrix
 
 #include <iostream>
 #include <vector>

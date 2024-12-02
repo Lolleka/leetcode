@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/implement-trie-prefix-tree
 // medium
+// #hash-table, #string, #design, #trie
+
 #include <iostream>
 #include <string>
 

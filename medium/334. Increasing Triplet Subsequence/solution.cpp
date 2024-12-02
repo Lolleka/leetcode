@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/increasing-triplet-subsequence/
 // medium
+// #array, #greedy
 
 #include <iostream>
 #include <vector>

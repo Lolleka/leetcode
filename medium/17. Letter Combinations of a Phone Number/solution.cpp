@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/letter-combinations-of-a-phone-number
 // medium
+// #hash-table, #string, #backtracking
 
 #include <iostream>
 #include <string>

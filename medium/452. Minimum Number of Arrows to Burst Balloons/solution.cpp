@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons
 // medium
+// #array, #greedy, #sorting
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

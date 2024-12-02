@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/successful-pairs-of-spells-and-potions
 // medium
+// #array, #two-pointers, #binary-search, #sorting
 
 #include <iostream>
 #include <vector>

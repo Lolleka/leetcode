@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/path-sum-iii
 // medium
+// #tree, #depth-first-search, #binary-tree
+
 #include <iostream>
 #include <stack>
 #include <vector>

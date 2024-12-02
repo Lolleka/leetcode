@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/container-with-most-water
 // medium
+// #array, #two-pointers, #greedy
+
 #include <iostream>
 #include <vector>
 #include <cassert>

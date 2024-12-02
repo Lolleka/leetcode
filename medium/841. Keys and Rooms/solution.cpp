@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/keys-and-rooms
 // medium
+// #depth-first-search, #breadth-first-search, #graph
+
 #include <iostream>
 #include <vector>
 #include <stack>

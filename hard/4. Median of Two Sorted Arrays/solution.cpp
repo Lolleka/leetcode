@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/median-of-two-sorted-arrays/
 // hard
+// #array, #binary-search, #divide-and-conquer
 
 #include <iostream>
 #include <vector>

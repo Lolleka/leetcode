@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/n-th-tribonacci-number/
 // easy
+// #math, #dynamic-programming, #dp, #memoization
 
 #include <iostream>
 #include <vector>
@@ -25,11 +26,6 @@ public:
 };
 
 int main(){
-    /* vector<int> v; */
-    /* for (int i=0; i < 100; ++i){ */
-    /*     v.push_back(i); */
-    /* } */
     cout << Solution().tribonacci(25) << endl;
-    
     return 0;
 }

@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/max-chunks-to-make-sorted-ii
 // hard
+// #array, #stack, #greedy, #sorting, #monotonic-stack
 
 #include <iostream>
 #include <vector>

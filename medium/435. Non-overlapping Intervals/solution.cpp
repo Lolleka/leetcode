@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/non-overlapping-intervals/
 // medium
+// #array, #dynamic-programming, #dp, #greedy, #sorting
 
 #include <iostream>
 #include <vector>

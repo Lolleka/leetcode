@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/asteroid-collision
 // medium
+// #array, #stack, #simulation
 #include <iostream>
 #include <vector>
 

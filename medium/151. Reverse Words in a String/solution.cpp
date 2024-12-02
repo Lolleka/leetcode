@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/reverse-words-in-a-string
 // medium
+// #two-pointers, #string
 
 
 #include <iostream>

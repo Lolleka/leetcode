@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/decode-string
 // medium 
+// #string, #stack, #recursion
+
 #include <iostream>
 #include <string>
 #include <stack>

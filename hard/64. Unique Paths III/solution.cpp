@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/unique-paths-iii/
 // hard
+// #array, #backtracking, #bit-manipulation, #matrix
 
 #include <iostream>
 #include <vector>

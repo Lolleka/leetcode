@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list
 // easy
 // #linked-list, #two-pointers
-//
+
 #include <iostream>
 #include <vector>
 #include <stack>

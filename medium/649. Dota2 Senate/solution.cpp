@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/dota2-senate
 // medium
+// #string, #greedy, #queue
 
 #include <iostream>
 #include <string>

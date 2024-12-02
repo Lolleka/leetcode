@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/can-place-flowers/
 // easy
+// #array, #greedy
 
 #include <iostream>
 #include <vector>

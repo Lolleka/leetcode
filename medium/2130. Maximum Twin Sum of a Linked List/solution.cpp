@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list
 // medium
+// #linked-list, #two-pointers, #stack
 
 #include <iostream>
 #include <vector>

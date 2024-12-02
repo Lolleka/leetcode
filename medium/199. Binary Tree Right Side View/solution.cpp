@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/binary-tree-right-side-view/
 // medium
+// #tree, #depth-first-search, #breadth-first-search, #binary-tree
 
 #include <iostream>
 #include <vector>

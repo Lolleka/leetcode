@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c
 // medium
+// #bit-manipulation
 
 #include <iostream>
 
@@ -36,9 +37,6 @@ public:
 
 int main (int argc, char *argv[]) {
     int a=4,b=2,c=7;
-    /*printBinary(a);*/
-    /*printBinary(b);*/
-    /*printBinary(c);*/
     std::cout << Solution().minFlips(a,b,c) << std::endl;
     return 0;
 }

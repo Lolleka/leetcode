@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/online-stock-span
 // medium
+// #stack, #design, #monotonic-stack, #data-stream
 
 #include <iostream>
 #include <stack>

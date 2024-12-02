@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/trapping-rain-water
 // hard
+// #array, #two-pointers, #dynamic-programming, #dp, #stack, #monotonic-stack
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

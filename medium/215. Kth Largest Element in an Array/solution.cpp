@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/kth-largest-element-in-an-array
 // medium
+// #array, #divide-and-conquer, #sorting, #heap, #quickselect
 
 #include <iostream>
 #include <vector>

@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/rectangle-overlap/
 // easy
+// #math, #geometry
 
 #include <iostream>
 #include <vector>

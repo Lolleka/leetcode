@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/min-cost-climbing-stairs
 // easy
-// #array, #dynamic-programming, #DP
+// #array, #dynamic-programming, #dp
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

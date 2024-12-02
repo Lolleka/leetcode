@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/lemonade-change/description/
 // easy
+// #array, #greedy
 
 #include <iostream>
 #include <vector>

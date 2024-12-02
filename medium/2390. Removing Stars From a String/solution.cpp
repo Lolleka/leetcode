@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/removing-stars-from-a-string
 // medium
+// #string, #stack, #simulation, #queue
 
 #include <iostream>
 #include <string>

@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/find-the-difference-of-two-arrays
 // easy
+// #array, #hash-table
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>

@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/combination-sum-iii/
 // medium
+// #array, #backtracking
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
