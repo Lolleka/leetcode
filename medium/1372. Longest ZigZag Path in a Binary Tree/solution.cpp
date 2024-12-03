@@ -1,12 +1,12 @@
-// https://leetcode.com/problems/delete-node-in-a-bst/
+// https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree
 // medium
-// #tree, #binary-search, #binary-tree
+// #dynamic-programming, #dp, #tree, #depth-first-search, #binary-tree
 
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <deque>
 #include <stack>
-#include <algorithm>
 
 struct TreeNode {
     int val;
@@ -16,6 +16,47 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
+class Solution {
+    struct dfsItem{
+        TreeNode* node;
+        bool left;
+        int streak;
+    };
+public:
+    int longestZigZag(TreeNode* root) {
+        // do a depth-first search to put all leaves in a stack, then compare the stacks. 
+        if (root == nullptr) return 0;
+        std::stack<dfsItem> stack;
+        if(root->left){
+            stack.push(dfsItem{root->left, true, 1});
+        }
+        if(root->right){
+            stack.push(dfsItem{root->right, false, 1});
+        }
+
+        int max_streak = 0;
+        while(!stack.empty()){
+            dfsItem current = stack.top();
+            stack.pop();
+            if(current.streak > max_streak) max_streak = current.streak;
+            std::cout << current.streak << " max: " << max_streak << std::endl;
+            if (current.left){
+                if(current.node->right)
+                    stack.push(dfsItem{current.node->right, false, current.streak+1});
+                if(current.node->left)
+                    stack.push(dfsItem{current.node->left, false, 1});
+            }else{
+                if(current.node->right)
+                    stack.push(dfsItem{current.node->right, false, 1});
+                if(current.node->left)
+                    stack.push(dfsItem{current.node->left, true, current.streak+1});
+            }
+        }
+        return max_streak;
+    }
+};
+
 
 TreeNode* buildTree(std::vector<int>& nums) {
     if (nums.empty()) {
@@ -71,42 +112,8 @@ void printTree(TreeNode* root) {
     }
 }
 
-class Solution {
-public:
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        if (root == nullptr) return root;
-        
-        if (root->val != key){
-            //continue search in both branches
-            root->left = deleteNode(root->left, key);
-            root->right = deleteNode(root->right, key);
-        } else {
-            // prefer returning right, greater elements
-            // we can safely return the left subtree if no right
-            // tree is found
-            if (root->right == nullptr) return root->left;
-            // likewise if no left tree is found, only the right
-            // can be returned
-            else if (root->left == nullptr) return root->right;
-            // if we need to choose, we can find
-            // the maximum in the left tree, safely set it as
-            // the current root value, and then delete the node
-            // with the same key in the subtree
-            TreeNode* current = root->left;
-            while(current->right != nullptr) current = current->right;
-            root->val = current->val;
-            root->left = deleteNode(root->left, root->val);
-        }
-        return root;
-    }
-};
-
-
 int main(){
-    std::vector<int> t1 = {5,3,6,2,4,0,7};
+    std::vector<int> t1 = {1,1,1,0,1,0,0,1,1,0,1};
     TreeNode* tree1 = buildTree(t1);
-    printTree(tree1);
-    std::cout << std::endl;
-    TreeNode* tree2 = Solution().deleteNode(tree1, 5);
-    printTree(tree2);
+    std::cout << Solution().longestZigZag(tree1) << std::endl;
 }
