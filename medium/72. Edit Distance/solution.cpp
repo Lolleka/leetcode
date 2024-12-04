@@ -4,65 +4,44 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 class Solution {
-    std::unordered_map<std::string, int> dp;
 public:
-    void conditionalAdd(std::string word, int ops){
-    }
-    void applyOps(std::string word, std::set<char> allowedChars, int nops){
-        // if an operation produces a word already in dp, do not perform.
-        std::string modword = "";
-        
-        // elisions
-        for (int i = 0; i < word.size(); ++i){
-            // elision of character at i
-            modword = word;
-            conditionalAdd(modword.erase(i), ops);
-        }
-        for(char c: allowedChars){
-            // insertions and replacements
-            for (int i = 0; i < word.size(); ++i){
-                // insertion before position i
-                modwor = word;
-                conditionalAdd(modword.insert(i,1,c), ops);
-                // replacement of character at i
-                modword = word;
-                conditionalAdd(modword.replace(i, c), ops);
-            }
-            // insertion at the end of string
-            modword = word;
-            conditionalAdd(modword.append(c), ops);
-        }
-    }
     int minDistance(std::string word1, std::string word2) {
         // notes:
-        // number of insertions or deletions
-        // will equal difference in size
-        // for replacements and insertions, only characters 
-        // in word2 should be considered
-        // worst case scenario is one where I substitute all characters
-        // and insert / delete all necessary characters
-        // so max operations = word2.size() + abs(word1.size()-word2.size())
-        // we could brute force each operation sequentially
-        // on each character, enforcing the known constraints
-        std::string word = "";
-        int nops = 0;
-        while(nops < max_ops){
-            nops++;
-            if (dp.size() == 0) word = word1;
-            else{
-                for(auto p: dp){
-                    word = p.first;
-                    applyOps(word);
-                }
+        // this should be an implementation of the Levenshtein distance
+        int n = word1.size();
+        int m = word2.size();
+        std::vector<std::vector<int>> lev(n+1, std::vector<int>(m+1,0));
+        // source prefixes can be transformed into empty string by
+        // dropping all characters
+        for(int j = 1; j < n; j++) lev[j][0] = j;
+        // target prefixes can be reached from empty source prefix by
+        // inserting every character
+        for(int i = 1; i < m; i++) lev[0][i] = i;
+        int subCost = 0;
+
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j <= m; j++){
+                subCost = static_cast<int>(word1[i-1] != word2[j-1]);
+                lev[i][j] = std::min(lev[i-1][j] + 1,  // deletion
+                                     lev[i][j-1] + 1); // insertion
+                lev[i][j] = std::min(lev[i][j], lev[i-1][j-1] + subCost); // substitution
+                /*std::cout << lev[i][j] << std::endl;*/
             }
         }
+
+        return lev[n-1][m-1];
     }
 };
 
 int main (int argc, char *argv[]) {
     std::string word1 = "horse";
     std::string word2 = "ros";
+    /*word1 = "code";*/
+    /*word2 = "leetcode";*/
+    std::cout << Solution().minDistance(word1, word2) << std::endl;
     return 0;
 }
