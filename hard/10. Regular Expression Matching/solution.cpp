@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cassert>
 
 class Solution {
 public:
@@ -28,13 +29,13 @@ public:
             if (p.size() > 1 && p[1] == '*'){
                 // trivial case
                 if (s.size() == 0) return true;
-                // either .* matches at least one character
-                ans = (s[0] == p[0] && isMatch(s.substr(1,s.size(), p)));
+                // either _* matches at least one character
+                ans = (s[0] == p[0] && isMatch(s.substr(1,s.size()), p));
                 // or it matches zero
                 ans |= isMatch(s, p.substr(1,p.size()-1));
             } else {
                 // it should match the character and the rest of the string
-                ans = (s[0] == p[0] && isMatch(s.substr(1,s.size()-1), p.substr(1,p.size()-1))));
+                ans = (s[0] == p[0] && isMatch(s.substr(1,s.size()-1), p.substr(1,p.size()-1)));
             }
         }
         return ans;
@@ -43,7 +44,7 @@ public:
 
 int main (int argc, char *argv[]) {
     std::string s = "aa";
-    std::string p = "a";
+    std::string p = "aa*";
     std::cout << std::boolalpha << Solution().isMatch(s,p) << std::endl;
     return 0;
 }
